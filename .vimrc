@@ -18,7 +18,7 @@ set sw=2
 set ls=2
 set autoread 
 set ai
-cmdheight=2
+set cmdheight=2
 set showmatch
 set mat=2
 set cd=,,
@@ -26,8 +26,8 @@ set cd=,,
 set nobackup
 set statusline=%<%f%h%h%m%r%=%{&ff}\ %l,%c%V\ %P
 
-set mouse=1
-tags=./tags,tags;
+set mouse=a
+set tags=./tags,tags;
 
 set nowrap
 set formatoptions-=t

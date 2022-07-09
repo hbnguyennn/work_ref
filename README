@@ -1,1 +1,8 @@
-This for testing
+#--------
+# Tmux
+#----------
+using tmux-plugins
+   tmux-sensible
+   tmux-resurrect
+   dracula/tmux
+   ...

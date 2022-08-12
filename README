@@ -6,3 +6,21 @@ using tmux-plugins
    tmux-resurrect
    dracula/tmux
    ...
+
+
+#-----------
+# git setup
+#------------
+
+# remove old credential 
+git config --global --unset credential.helper
+git config credential.helper store
+
+# go to github create token, then save
+
+# new Clone
+git clone https://<token>@github.com/<username>/<repo>
+
+# update repo
+git remote set-url origin https://<token>@github.com/<username>/<repo>
+

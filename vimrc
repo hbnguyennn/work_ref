@@ -1,5 +1,6 @@
 set nocompatible
 syntax enable
+
 set scrolloff=1
 set t_Co=256
 set background=dark
@@ -8,7 +9,6 @@ set hlsearch
 set cursorline
 
 set nu
-set rnu
 set noerrorbells
 set novisualbell
 set ts=3
@@ -34,15 +34,15 @@ set formatoptions-=t
 set tw=0
 
 augroup filetypedetect
-  autocmd BufRead,BufNewFile *.V   set ft=verilog
-  autocmd BufRead,BufNewFile *.bv  set ft=verilog
-  autocmd BufRead,BufNewFile *.vh  set ft=verilog
-  autocmd BufRead,BufNewFile *.sv  set ft=systemverilog
-  autocmd BufRead,BufNewFile *.svh  set ft=systemverilog
+  autocmd BufRead,BufNewFile *.V       set ft=verilog
+  autocmd BufRead,BufNewFile *.bv      set ft=verilog
+  autocmd BufRead,BufNewFile *.vh      set ft=verilog
+  autocmd BufRead,BufNewFile *.sv      set ft=systemverilog
+  autocmd BufRead,BufNewFile *.svh     set ft=systemverilog
   autocmd BufRead,BufNewFile *.sv.kpp  set ft=systemverilog
-  autocmd BufRead,BufNewFile *.sv  set ft=systemverilog
-  autocmd BufRead,BufNewFile *.src set ft=asm
-  autocmd BufRead,BufNewFile *.io  set ft=iskeyword+=[,],.
+  autocmd BufRead,BufNewFile *.sv      set ft=systemverilog
+  autocmd BufRead,BufNewFile *.src     set ft=asm
+  autocmd BufRead,BufNewFile *.io      set ft=iskeyword+=[,],.
 augroup END
 
 :map <C-j> :vertical resize -5<CR>

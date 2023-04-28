@@ -1,12 +1,15 @@
-#--------
+Need to clone tmux plugin manager before use
+run : source setup.sh to copy over all the file to ${HOME} directory
+
+#----------
 # Tmux
 #----------
+
 using tmux-plugins
    tmux-sensible
    tmux-resurrect
    dracula/tmux
    ...
-
 
 #-----------
 # git setup

@@ -1,4 +1,7 @@
 Need to clone tmux plugin manager before use
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 run : source setup.sh to copy over all the file to ${HOME} directory
 
 #----------
@@ -26,4 +29,26 @@ git clone https://<token>@github.com/<username>/<repo>
 
 # update repo
 git remote set-url origin https://<token>@github.com/<username>/<repo>
+
+
+#------------------------------
+# neovim setup
+#------------------------------
+- astro nvim dependencies
+   + git version 2.x
+   + ripgrep
+   + fzf
+   + fd
+   + more on astronvim git page
+
+For AstroNvim
+git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/AstroNvim
+git clone https://github.com/hbnguyennn/astronvim_config ~/.config/AstroNvim/lua/user
+
+setenv NVIM_APPNAME AstroNvim
+nvim
+
+- If gcc version is too old
+cd ${HOME}/.local/share/AstroNvim/lazy/nvim-treesitter/lua/nvim-treesitter/
+add "-std=c99" in selec_compiler_args
 

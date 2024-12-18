@@ -1,74 +1,180 @@
 // Place your key bindings in this file to override the defaults
 [
+   {
+      "command": "-workbench.action.files.newUntitledFile",
+      "key": "cmd+n"
+   },
    // Navigation
    {
-      "key": "ctl-h",
-      "command": "workbench.action.navigateLeft"
+      "command": "workbench.action.navigateLeft",
+      "key": "ctrl-h"
    },
    {
-      "key": "ctl-l",
-      "command": "workbench.action.navigateRight"
+      "command": "workbench.action.navigateRight",
+      "key": "ctrl-l"
    },
    {
-      "key": "ctl-k",
-      "command": "workbench.action.navigateUp"
+      "command": "workbench.action.navigateDown",
+      "key": "ctrl-j"
    },
    {
-      "key": "ctl-j",
-      "command": "workbench.action.navigateDown"
+      "command": "workbench.action.navigateUp",
+      "key": "ctrl-k"
+   },
+   {
+      "command": "workbench.action.showAllEditors",
+      "key": "space ,",
+      "when": "vim.mode != 'CommandlineInProgress' && vim.mode != 'SearchInProgressMode' && vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
+   },
+   {
+      "command": "workbench.action.toggleSidebarVisibility",
+      "key": "space e",
+      "when": "vim.mode != 'CommandlineInProgress' && vim.mode != 'SearchInProgressMode' && vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
+   },
+   {
+      "command": "workbench.action.previousEditorInGroup",
+      "key": "cmd-h",
+      "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)"
+   },
+   {
+      "command": "workbench.action.nextEditorInGroup",
+      "key": "cmd-l",
+      "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)"
+   },
+   // Coding
+   {
+      "key": "shift-j",
+      "command": "editor.action.moveLinesDownAction",
+      "when": "vim.mode == 'Visual' && editorTextFocus "
+   },
+   {
+      "key": "shift-k",
+      "command": "editor.action.moveLinesUpAction",
+      "when": "vim.mode == 'Visual' && editorTextFocus "
+   },
+   {
+      "key": "shift-k",
+      "command": "editor.action.showHover",
+      "when": "vim.mode == 'Normal' && editorTextFocus "
+   },
+   {
+      "key": "shift-l",
+      "command": "editor.action.indentLines",
+      "when": "vim.mode == 'Visual' && editorTextFocus "
+   },
+   {
+      "key": "shift-h",
+      "command": "editor.action.outdentLines",
+      "when": "vim.mode == 'Visual' && editorTextFocus "
+   },
+   {
+      "key": "space c c",
+      "command": "editor.action.commentLine",
+      "when": "vim.mode != 'CommandlineInProgress' && vim.mode != 'SearchInProgressMode' && vim.mode != 'Insert' && (editorTextFocus || !inputFocus)"
+   },
+   {
+      "key": "space c a",
+      "command": "editor.action.codeAction",
+      "when": "vim.mode != 'CommandlineInProgress' && vim.mode != 'SearchInProgressMode' && vim.mode == 'Normal' && editorTextFocus "
+   },
+   {
+      "key": "space c r",
+      "command": "editor.action.rename",
+      "when": "vim.mode != 'CommandlineInProgress' && vim.mode != 'SearchInProgressMode' && vim.mode == 'Normal' && editorTextFocus "
+   },
+   {
+      "key": "space c s",
+      "command": "workbench.action.gotoSymbol",
+      "when": "vim.mode != 'CommandlineInProgress' && vim.mode != 'SearchInProgressMode' && vim.mode == 'Normal' && editorTextFocus "
+   },
+   {
+      "key": "space b d",
+      "command": "workbench.action.closeActiveEditor",
+      "when": "vim.mode != 'CommandlineInProgress' && vim.mode != 'SearchInProgressMode' && vim.mode == 'Normal' && editorTextFocus "
+   },
+   {
+      "key": "space space",
+      "command": "workbench.action.quickOpen",
+      "when": "vim.mode != 'CommandlineInProgress' && vim.mode != 'SearchInProgressMode' && vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
+   },
+   {
+      "key": "space g d",
+      "command": "editor.action.revealDefinition",
+      "when": "vim.mode != 'CommandlineInProgress' && vim.mode != 'SearchInProgressMode' && vim.mode == 'Normal' && editorTextFocus "
+   },
+   {
+      "key": "space g r",
+      "command": "editor.action.goToReferences",
+      "when": "vim.mode != 'CommandlineInProgress' && vim.mode != 'SearchInProgressMode' && vim.mode == 'Normal' && editorTextFocus "
+   },
+   {
+      "key": "space s g",
+      "command": "workbench.action.findInFiles",
+      "when": "vim.mode != 'CommandlineInProgress' && vim.mode != 'SearchInProgressMode' && vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
+   },
+   {
+      "key": "space g g",
+      "command": "workbench.view.scm",
+      "when": "vim.mode != 'CommandlineInProgress' && vim.mode != 'SearchInProgressMode' && vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
+   },
+   {
+      "key": "ctrl-n",
+      "command": "editor.action.addSelectionToNextFindMatch",
+      "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)"
    },
 
-   // Editor navigation
+   // File Explorer
    {
-      "key": "alt+h",
-      "command": "workbench.action.previousEditor"
+      "key": "a",
+      "command": "explorer.newFile",
+      "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+   },
+   {
+      "key": "shift-a",
+      "command": "explorer.newFolder",
+      "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+   },
+   {
+      "key": "r",
+      "command": "renameFile",
+      "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+   },
+   {
+      "key": "c",
+      "command": "filesExplorer.copy",
+      "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+   },
+   {
+      "key": "p",
+      "command": "filesExplorer.paste",
+      "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+   },
+   {
+      "key": "s",
+      "command": "explorer.openToSide",
+      "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+   },
+   {
+      "key": "shift-s",
+      "command": "runCommands",
+      "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus",
+      "args": {
+         "commands":[
+            "workbench.action.splitEditorDown",
+            "explorer.openAndPassFocus",
+            "workbench.action.closeOtherEditors"
+         ]
+      }
+   },
+   {
+      "key": "enter",
+      "command": "explorer.openAndPassFocus",
+      "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+   },
+   {
+      "key": "ctrl+cmd+m",
+      "command": "workbench.action.toggleMaximizedPanel",
+      "when": "panelAlignment == 'center' || panelPosition != 'bottom' && panelPosition != 'top'"
    },
 
-   {
-      "key": "alt+e",
-      "command": "workbench.action.toggleSidebarVisibility"
-   },
-   {
-      "key": "ctrl+b",
-      "command": "-workbench.action.toggleSidebarVisibility"
-   },
-   {
-      "key": "alt+n",
-      "command": "workbench.action.togglePanel"
-   },
-   {
-      "key": "ctrl+j",
-      "command": "-workbench.action.togglePanel"
-   },
-   {
-      "key": "alt+p",
-      "command": "workbench.action.quickOpen"
-   },
-   {
-      "key": "alt+l",
-      "command": "workbench.action.nextEditor"
-   },
-   {
-      "key": "alt+j",
-      "command": "workbench.action.quickOpenNavigateNext"
-   },
-   {
-      "key": "alt+k",
-      "command": "workbench.action.quickOpenNavigatePrevious"
-   },
-   {
-      "key": "ctrl+h",
-      "command": "-vscode-neovim.send",
-      "when": "editorTextFocus && neovim.ctrlKeysInsert.h && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
-   },
-   {
-      "key": "ctrl+h",
-      "command": "-vscode-neovim.send",
-      "when": "editorTextFocus && neovim.ctrlKeysNormal.h && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
-   },
-   {
-      "key": "ctrl+h",
-      "command": "-vscode-neovim.send-cmdline",
-      "when": "neovim.init && neovim.mode == 'cmdline'"
-   }
 ]

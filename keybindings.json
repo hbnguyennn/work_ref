@@ -4,6 +4,7 @@
       "command": "-workbench.action.files.newUntitledFile",
       "key": "cmd+n"
    },
+
    // Navigation
    {
       "command": "workbench.action.navigateLeft",
@@ -41,6 +42,20 @@
       "key": "cmd-l",
       "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)"
    },
+   // Navigation on search
+
+   {
+      "key": "ctrl-j",
+      "command": "workbench.action.quickOpenNavigateNext",
+      //"when": "sideBarFocus"
+   },
+
+   {
+      "key": "ctrl-k",
+      "command": "workbench.action.quickOpenNavigatePrevious",
+      //"when": "sideBarFocus"
+   },
+
    // Coding
    {
       "key": "shift-j",
@@ -176,5 +191,6 @@
       "command": "workbench.action.toggleMaximizedPanel",
       "when": "panelAlignment == 'center' || panelPosition != 'bottom' && panelPosition != 'top'"
    },
+
 
 ]

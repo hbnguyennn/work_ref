@@ -44,17 +44,17 @@
    },
    // Navigation on search
 
-   {
-      "key": "ctrl-j",
-      "command": "workbench.action.quickOpenNavigateNext",
-      //"when": "sideBarFocus"
-   },
+   //{
+   //   "key": "ctrl-j",
+   //   "command": "workbench.action.quickOpenNavigateNext",
+   //   //"when": "sideBarFocus"
+   //},
 
-   {
-      "key": "ctrl-k",
-      "command": "workbench.action.quickOpenNavigatePrevious",
-      //"when": "sideBarFocus"
-   },
+   //{
+   //   "key": "ctrl-k",
+   //   "command": "workbench.action.quickOpenNavigatePrevious",
+   //   //"when": "sideBarFocus"
+   //},
 
    // Coding
    {
@@ -190,7 +190,5 @@
       "key": "ctrl+cmd+m",
       "command": "workbench.action.toggleMaximizedPanel",
       "when": "panelAlignment == 'center' || panelPosition != 'bottom' && panelPosition != 'top'"
-   },
-
-
+   }
 ]

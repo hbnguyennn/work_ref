@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+
+if((scalar @ARGV) >= 2) {
+   my $time = int($ARGV[1] - $ARGV[0]);
+   my $ss   = $time % 60 ;
+   my $time = int($time / 60 );
+   my $mm   = $time % 60;
+   my $hh   = int($time /60);
+   my $str  = '';
+
+   if($hh > 0)    {$str .= sprintf("%uh", $hh);}
+   if($mm > 0)    {$str .= sprintf("%um", $mm);}
+   if($ss > 0)    {$str .= sprintf("%us", $ss);}
+   if($str eq '') {$str = '0s';}
+
+   print $str, "\n";
+}
+
+__END__
+

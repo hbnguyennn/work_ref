@@ -2,13 +2,68 @@
    "remote.SSH.remotePlatform": {
       "ubt": "linux"
    },
-   "editor.fontFamily": "JetbrainsMonoNL Nerd Font",
- //"editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+
+   //-------------------------//
+   // Workbench configuration //
+   //-------------------------//
+   "workbench.iconTheme": "material-icon-theme",
+   "workbench.layoutControl.enabled": false,
+   "workbench.editor.editorActionsLocation": "hidden",
+   "workbench.navigationControl.enabled": false,
+   "workbench.activityBar.location": "hidden",
+   "workbench.sideBar.location": "right",
+   "workbench.editor.showTabs": "multiple",
+   "workbench.editor.enablePreview": false,
+   "workbench.startupEditor": "none",
+   "editor.minimap.enabled": false,
+   "breadcrumbs.enabled": false,
+   "material-icon-theme.hidesExplorerArrows": true,
+   "workbench.tree.enableStickyScroll": false,
+   "workbench.tree.renderIndentGuides": "onHover",
+   "workbench.tree.indent": 14,
+   "workbench.editorAssociations": {
+      "*.gz": "default"
+   },
+   "window.commandCenter": false,
+   "window.menuBarVisibility": "compact",
+   "window.customTitleBarVisibility": "windowed",
+
+   "security.workspace.trust.untrustedFiles": "open",
+   "extensions.ignoreRecommendations": true,
+
+   //----------------------------//
+   // colorscheme configurations //
+   //----------------------------//
+   "workbench.colorTheme": "Material Theme Ocean High Contrast",
+   "oneDarkPro.bold": false,
+   "oneDarkPro.italic": false,
+   "oneDark.bold": false,
+   "oneDark.italic": false,
+ //"workbench.colorCustomizations": {
+ //   "editor.background": "#1a1d20",
+ //   "editor.lineHighlightBackground": "#1073cf2d",
+ //   "editor.lineHighlightBorder": "#9fced11f"
+ //},
+
+   //-----------------------//
+   // Editor configurations //
+   //-----------------------//
+   "vim.easymotion": true,
+   "editor.fontFamily": "JetBrainsMonoNL Nerd Font",
+   "editor.fontSize": 16,
    "editor.fontVariations": false,
    "editor.tabSize": 3,
+   "prettier.tabWidth": 3,
    "editor.formatOnPaste": true,
-   "editor.minimap.enabled": false,
+   "editor.formatOnType": true,
    "editor.renderWhitespace": "all",
+   "editor.bracketPairColorization.enabled": true,
+   "editor.guides.bracketPairs": "active",
+   "editor.guides.highlightActiveBracketPair": true,
+   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+ //"editor.inlayHints.enabled": "off",
+   "files.trimTrailingWhitespace": true,
+   "editor.wordWrap": "off",
    "search.searchOnType": false,
    "search.exclude": {
       "**/*.code-search": true,
@@ -17,46 +72,37 @@
       "**/neovim": true
    },
 
-   "editor.guides.highlightActiveBracketPair": true,
+   "extensions.experimental.affinity": {
+      "asvetliakov.vscode-neovim": 1
+   },
 
    "editor.tokenColorCustomizations": {
       "textMateRules": [
-      {
-         "scope": [
-            "comment",
-            "comment_block",
-            "comment_line",
-         ],
+         {
+            "scope": [
+               "comment",
+               "comment_block",
+               "comment_line",
+            ],
 
-         "settings" : {
-            "fontStyle" : "",
+            "settings" : {
+               "fontStyle" : "",
+            }
          }
-      }
       ],
-
    },
 
-   //"vim.normalModeKeyBindings": [
-   //     {
-   //         "before": [":"],
-   //         "commands": [
-   //             "workbench.action.showCommands",
-   //         ],
-   //         "silent": true
-   //     }
-   // ]
+   "diffEditor.ignoreTrimWhitespace": true,
 
-   "editor.bracketPairColorization.enabled": true,
+   //-----------------------//
+   // neovim configurations //
+   //-----------------------//
+   "vscode-neovim.neovimExecutablePaths.win32": "C:\\Program Files\\Neovim\\bin\\nvim.exe",
+   "vscode-neovim.neovimInitVimPaths.linux": "C:\\Users\\hoang\\AppData\\Local\\nvim\\init.luaaaaaaaaaaaaa",
 
-   //--------------------------------
-   // APC
-   //--------------------------------
-   //"apc.activityBar": {
-   //   "position": "bottom",
-   //   "hideSetting": true,
-   //   "size": 20
-   //},
-
+   //-------------------------//
+   // filetype configurations //
+   //-------------------------//
    "files.associations": {
       "*.dj": "ruby",
       "*.svi": "systemverilog",
@@ -70,66 +116,24 @@
       "make.*": "makefile"
    },
 
+   //------------------------//
+   // termial configurations //
+   //------------------------//
+   "terminal.integrated.fontSize": 16,
    "terminal.integrated.copyOnSelection": true,
    "terminal.integrated.fontWeightBold": "normal",
-   "workbench.editorAssociations": {
-      "*.gz": "default"
-   },
-   "workbench.editor.enablePreview": false,
-   "editor.wordWrap": "off",
-   "prettier.tabWidth": 3,
 
-   "oneDarkPro.bold": false,
-   "oneDarkPro.italic": false,
-   "oneDark.bold": false,
-   "oneDark.italic": false,
-   "editor.formatOnType": true,
-
-   "workbench.colorCustomizations": {
-      "editor.background": "#1a1d20",
-      "editor.lineHighlightBackground": "#1073cf2d",
-      "editor.lineHighlightBorder": "#9fced11f"
-   },
-   "extensions.experimental.affinity": {
-      "asvetliakov.vscode-neovim": 1
-   },
-   "vscode-neovim.neovimExecutablePaths.win32": "C:\\Program Files\\Neovim\\bin\\nvim.exe",
-   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
-   "editor.guides.bracketPairs": "active",
+   //-----------------------//
+   // others configurations //
+   //-----------------------//
    "git.enableSmartCommit": true,
-   "vscode-neovim.neovimInitVimPaths.linux": "C:\\Users\\hoang\\AppData\\Local\\nvim\\init.luaaaaaaaaaaaaa",
-   "apc.stylesheet": {
-
-   },
-   //"editor.guides.bracketPairs": false,
-   //"editor.inlayHints.enabled": "off",
-   //"diffEditor.wordWrap": "off",
-   //"editor.guides.indentation": false,
-   //"editor.bracketPairColorization.enabled": false,
-
-   //"apc.activityBar": {
-   //   "position": "bottom",
-   //},
-
-   "apc.statusBar": {
-      "position": "editor-bottom",
-      "height": 30,
-      "fontSize": 14,
-   },
-   "workbench.startupEditor": "none",
    "cmake.showOptionsMovedNotification": false,
    "[shellscript]": {
       "files.eol": "\n"
    },
    "git.confirmSync": false,
-   "editor.fontSize": 16,
-   "terminal.integrated.fontSize": 16,
-   "files.trimTrailingWhitespace": true,
-   "extensions.ignoreRecommendations": true,
-   "workbench.activityBar.location": "top",
-   "vim.easymotion": true,
-   "window.commandCenter": false,
-   "window.customTitleBarVisibility": "windowed",
-   "workbench.sideBar.location": "right",
+
    "chat.editor.fontSize": 16,
+   "chat.commandCenter.enabled": false,
+
 }

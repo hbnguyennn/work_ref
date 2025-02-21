@@ -1,0 +1,258 @@
+;; Header or file info
+
+[Default]
+com.mem = 1200mb
+
+Project     = HOMEWORK
+Family      = HOMEWORK
+Subfamily   = HOMEWORK
+Product     = HOMEWORK
+
+com.mem = 1200mb
+sim.mem = 900mb
+fpv.mem = 1gb
+
+com.runtime = 15min
+sim.runtime = 2hr
+fpv.runtime = 15min
+
+env.SIMWRAP_DUMP_MDA = yes
+tb.root        = ${VERIF_UVM_ROOT}/tb/tb_top
+make.FPV_ROOT  = ${VERIF_UVM_ROOT}/tb/formal
+vplan          = ${VERIF_UVM_ROOT}/doc/vplan/xrsec.hvp
+
+define.TSMC_A_   = 6000
+define.TSMC_B_   = <define>
+
+import = sa_enable
+testparam.disable_eot_replay_checks = 1 ;;FIXME
+
+
+[regressions]
++------------------+
+; Regression Name  |
++------------------+
+| bfm_smoke        |
+| rtl_smoke        |
+| rtl_signoff      |
+| rtl_release      |
++------------------+
+
+[regressions_1]
++------------------+
+| bfm_smoke        |
+| rtl_smoke        |
++------------------+
+
+
+[blocks]
++---------------------------------------+
+; Block Name                            |
++---------------------------------------+
+| flc_top | rtl            | -          |
+|         | gls            | lib_a      |
+|         | rtl_encrypted  | lib_a      |
++---------------------------------------+
+| bfm                                   |
++---------------------------------------+
+| block_1                               |
++---------------------------------------+
+
+[flc_top]
+dut = flc
+cov.order  = 20
+xprop.mode = enable
+
+import = lifetime_disable
+
+define.USE_FLC_TOP = <defined>
+define.UVM_USE_DEPRECATED = <defined>
+define.UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR = <defined>
+
+testparam.skip_dec_egr_pb_metadata_check = 11
+
+[rtl]
+make.MAKE_CRF_SPECIFY = no
+make.UDP_SEQ_DELAY    = 1ps
+
+define.SYNTHESIS      = <undef>
+plusarg.suppress_meta_disp = <defined>
+
+[rtl_encrypted]
+import = rtl
+make.DUT_FILES = dut_encrypted.f
+dj.config = my_encrypted_config
+
+define.DISABLE_RAM_BKDR          = <define>
+define.DISABLE_FLC_TOP_ASSERTION = <define>
+
+[gls]
+import = rtl
+make.DUT_FILES = dut_gls.f
+com.mem        = 10gb
+com.runtime    = 3hr
+sim.mem        = 10gb
+sim.runtime    = 24h
+define.GLS     = <defined?
+define.DISABLE_RAM_BKDR          = <define>
+define.DISABLE_FLC_TOP_ASSERTION = <define>
+
+define.BFM_EN       = <defined>
+define.USE_FLC_TOP  = <defined>
+xprop.mode          = disable
+cov.metrics         = disable
+testparam.zero_seq_num = 0
+
+[lib_a]
+define.USE_LIB_A = <defined>
+define.USE_LIB_B = <undef>
+[lib_b]
+define.USE_LIB_A = <undef>
+define.USE_LIB_B = <defined>
+
+[bfm]
+import = disable_stats
+make.DUT_FILES = bfm.f
+
+[block_1]
+tb.root = \${VERIF_UVM_ROOT}/tb/block_1
+env.SIMWRAP_PARTCOMP  = no
+make.MAKE_CRF_SPECIFY = no
+make.UDP_SEQ_DELAY    = 1ps
+define.UVM_USE_DEPRECATED                 = <defined>
+define.UVMKIT_RUN_DEPRECATED_CODE         = <defined>
+define.UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR = <defined>
+
+[bfm_smoke]
++----------------------------------------------+
+| bfm | hello_world                            |
+|     | bfm_traffic_random.*  !*crypto_bypass* |
++----------------------------------------------+
+
+[rtl_smoke]
++------------------------------------------------------+
+| flc_top.rtl     | hello_world                        |
+|                 | test_traffic_basic.*   !*b2b*      |
++------------------------------------------------------+
+| flc_top.gls     | hello_world                        |
+|                 | test_traffic_basic.*   !*b2b*      |
++------------------------------------------------------+
+
+[rtl_signoff]
++------------------------------------------------------+
+| flc_top.rtl     | hello_world                        |
+|                 | test_traffic_basic.*   !*b2b*      |
+|                 | test_traffic_random.*  !*b2b*      |
+|                 | test_regs_acc.*        !*b2b*      |
+|                 | test_ram_acc.*         !*b2b*      |
+|                 | test_performance.*                 |
++------------------------------------------------------+
+| flc_top.gls     | hello_world                        |
+|                 | test_traffic_basic.*   !*b2b*      |
+|                 | test_regs_acc.*        !*b2b*      |
+|                 | test_ram_acc.*         !*b2b*      |
+|                 | test_performance.*                 |
++------------------------------------------------------+
+
+[rtl_release]
++------------------------------------------------------+
+| flc_top.rtl     | hello_world                        |
+|                 | test_traffic_basic.*   !*b2b*      |
+|                 | test_regs_acc.*        !*b2b*      |
+|                 | test_ram_acc.*         !*b2b*      |
++------------------------------------------------------+
+| flc_top.gls     | hello_world                        |
+|                 | test_traffic_basic.*   !*b2b*      |
+|                 | test_regs_acc.*        !*b2b*      |
+|                 | test_ram_acc.*         !*b2b*      |
++------------------------------------------------------+
+
+[tests]
++-----------------------------------------------------------------------------------------------------------------------+
+; Test Name                                                       | Features            | Owners     | Block            |
++-----------------------------------------------------------------------------------------------------------------------+
+| hello_world                                                     | smoke               | everyone   | *                |
++-----------------------------------------------------------------------------------------------------------------------+
+| test_traffic_basic                                              | traffic             | hoang      | *flc_top* *bfm*  |
+| test_traffic_random                                             |                     |            |                  |
+| test_regs_acc                                                   |                     |            |                  |
+| test_ram_acc                                                    |                     |            |                  |
+| test_performance                                                |                     |            |                  |
++-----------------------------------------------------------------------------------------------------------------------+
+
+
+[hello_world]
+
+[test_table]
+
++---------------------------------------+
+| ipsec_esp | -         | -             |
+|           | enc_only  | b2b           |
+|           | dec_only  |               |
++---------------------------------------+
+
+[basic_test]
+UVM_TEST_NAME = test_traffic_basic
+testparam.cfg_basic_traffic = 1
+testparam.cfg_clk_enable    = 1
+testparam.cfg_clk_freq      = 10000
+
+
+[test_traffic_basic]
+UVM_TEST_NAME = test_traffic_basic
+import = basic_test
+import = test_table
+count  = 2
+
+testparam.cfg_enc_settingsomething = randc(0*20, 1*2, randc(2~10*2))
+testparam.cfg_dec_sa_num           = 100
+
++------------------------------------------+
+| std_eth | -         | -   |-             |
+|         | enc_only  | b2b |b2b           |
+|         | dec_only  |     |              |
++------------------------------------------+
+
+[test_traffic_random]
+
+[test_regs_acc]
+
+[test_ram_acc]
+
+[test_performance]
+
+[sa_enable]
+testparam.cfg_sa_enable = 1
+
+
+[ipsec_esp]
+features.secmode = peer-esp
+testparam.cfg_mode = ipsec_esp
+
+
+[std_eth]
+features.secmode = std-eth
+testparam.cfg_mode = std_eth
+
+[enc_only]
+features.dir = enc
+testparam.cfg_enc_enable = 1
+testparam.cfg_dec_enable = 0
+
+[dec_only]
+features.dir = dec
+testparam.cfg_enc_enable = 0
+testparam.cfg_dec_enable = 1
+
+[b2b]
+import = sa_enable
+testparam.cfg_b2b_enable = 1
+
+              [lifetime_disable]
+testparam.cfg_enc_lifetime_disable = 1
+testparam.cfg_dec_lifetime_disable = 1
+
+;testparam.should_be_exclude = 1
+       ;ERROR testparam.should_be_exclude_1 = 1
+testparam.complicate = 1
+                     testparam.complicate = 1

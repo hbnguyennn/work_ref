@@ -76,6 +76,7 @@ testparam.abcdec = IsItBad2 ;;FIXME
 | flc_top | rtl            | -          |
 |         | gls            | lib_a      |
 |         | rtl_encrypted  | lib_a      |
+|         | rtl_encrypted  | lib_a      |
 +---------------------------------------+
 | bfm                                   |
 +---------------------------------------+

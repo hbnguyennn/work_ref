@@ -78,7 +78,7 @@ def convert_table_to_list(table):
       results = n_results.copy()
       n_result=[]
 
-   results = sorted(results, key=lambda x: x[0])
+   results = sorted(list(dict.fromkeys(results)), key=lambda x: x[0])
    pprint.pprint(results)
    print (f"Total tests: {len(results)}")
 
@@ -204,7 +204,8 @@ def process_file(infile):
    if 1:
       print("DB---------------------")
       #pprint.pprint(GL_TCSECTIONS["Default"]["TABLES"])
-      table = GL_TCSECTIONS["Default"]["TABLES"]["TABLE2"]
+      table = GL_TCSECTIONS["Default"]["TABLES"]["TABLE1"]
+      #table = GL_TCSECTIONS["blocks"]["TABLES"]["TABLE1"]
       #table = GL_TCSECTIONS["test_traffic_random"]["TABLES"]["TABLE1"]
       convert_table_to_list(table)
       #pprint.pprint(table)

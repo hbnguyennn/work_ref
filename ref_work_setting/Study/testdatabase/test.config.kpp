@@ -27,6 +27,30 @@ define.TSMC_B_   = <define>
 import = sa_enable
 testparam.disable_eot_replay_checks = 1 ;;FIXME
 
+import = imp_test_1
+
+testparam.aaadisable_eot_replay_checks = 1 ;;FIXME
+testparam.abcdecf = IsItBad1 ;;FIXME
+
+import = test_table
+
+
+[imp_test_1]
+inside imp_test1
+inside imp_test1
+inside imp_test1
+import = imp_test_2
+
+[imp_test_2]
+inside imp_test_2
+inside imp_test_2
+import = imp_test_final
+
+[imp_test_final]
+inside imp_test_final
+
+testparam.abcdec = IsItBad2 ;;FIXME
+
 
 [regressions]
 +------------------+
@@ -186,7 +210,15 @@ define.UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR = <defined>
 [test_table]
 
 +---------------------------------------+
-| ipsec_esp | -         | -             |
+| ipsec_esp | -         | b2b   | -     |
+|           | enc_only  | -     | omg   |
+| psp_std   | dec_only  |       |       |
+|           | mix       |       |       |
+|           | abcd      |       |       |
++---------------------------------------+
+
++---------------------------------------+
+| psp_esp | -         | -             |
 |           | enc_only  | b2b           |
 |           | dec_only  |               |
 +---------------------------------------+
@@ -214,6 +246,13 @@ testparam.cfg_dec_sa_num           = 100
 +------------------------------------------+
 
 [test_traffic_random]
++------------------------------------------+
+| std_eth | -         | -   |-             |
+| aaa     | enc_only  | b2b |b2b           |
+|         | dec_only  |     |              |
+|         | a_only  |     |              |
+|         | c_only  |     |              |
++------------------------------------------+
 
 [test_regs_acc]
 
@@ -256,3 +295,7 @@ testparam.cfg_dec_lifetime_disable = 1
        ;ERROR testparam.should_be_exclude_1 = 1
 testparam.complicate = 1
                      testparam.complicate = 1
+
+[disable_stats]
+inside disable stats
+testparam.cfg_disable_stats = 1

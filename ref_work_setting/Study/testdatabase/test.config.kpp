@@ -198,8 +198,8 @@ define.UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR = <defined>
 +-----------------------------------------------------------------------------------------------------------------------+
 | hello_world                                                     | smoke               | everyone   | *                |
 +-----------------------------------------------------------------------------------------------------------------------+
-| test_traffic_basic                                              | traffic             | hoang      | *flc_top* *bfm*  |
-| test_traffic_random                                             |                     |            |                  |
+| test_traffic_basic                                              | traffic             | hoang      | *flc_top*        |
+| test_traffic_random                                             |                     |            | *bfm*            |
 | test_regs_acc                                                   |                     |            |                  |
 | test_ram_acc                                                    |                     |            |                  |
 | test_performance                                                |                     |            |                  |
@@ -269,6 +269,15 @@ testparam.cfg_sa_enable = 1
 features.secmode = peer-esp
 testparam.cfg_mode = ipsec_esp
 
+[psp_std]
+features.secmode = peer-esp
+testparam.cfg_mode = ipsec_esp
+
+[abcd]
+
+[psp_esp]
+features.secmode = peer-esp
+testparam.cfg_mode = ipsec_esp
 
 [std_eth]
 features.secmode = std-eth
@@ -300,3 +309,12 @@ testparam.complicate = 1
 [disable_stats]
 inside disable stats
 testparam.cfg_disable_stats = 1
+
+[aaa]
+;test for aaa
+inside test aaa
+[omg]
+[mix]
+
+[a_only]
+[c_only]

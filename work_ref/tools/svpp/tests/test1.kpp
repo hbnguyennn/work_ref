@@ -1,0 +1,62 @@
+$write("\tThis is a message\n");
+
+16 Hello's follow
+
+@@ # This is a comment
+@@
+@@ for (my $i=0; $i < 16; $i++) {
+@@
+   "Hello"
+@@
+@@ }
+@@
+@@ # Test the embedded directives
+@@
+@@ kPp     Translate_OFF
+@@ #kPP
+
+This message should not appear in the output
+@@ This comment shouldn't appear in the output
+
+@@ kpp translate_on
+Another message should appear in the output
+@@ kpp translate_off
+@@ this $VARIABLE shouldn't affect anything
+@@ kpp translate_on
+
+@@ kPp perl_section_begin
+
+#
+# This subroutine is not prefixed with the usual @@ character
+#
+sub get_message {
+   return "End of test";
+}
+@@ kPp Perl_Section_End
+@@
+@@ my $message = &get_message;
+@@
+   ${message}
+
+   \${escaped_variable}
+   \@escaped_list
+
+
+@@
+@@ foreach my $dir ('enc', 'dec') {
+@@
+
+module ${dir}_instante (
+   .clk   (clk)
+  ,.reset (rst_b)
+//  ENC side
+  ,.tdata (vif.${dir}.tdata)
+  ,.tlast (vif.${dir}.tlast)
+   @@ if ($dir eq 'enc') {
+  ,.sideband (vif.${dir}.side_band_${dir})
+   @@ }
+  ,.*
+)
+@@
+@@ }
+@@

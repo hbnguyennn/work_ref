@@ -1,0 +1,48 @@
+
+@@ # This is a comment
+@@
+@@ for (my $i=0; $i < 5; $i++) {
+@@
+   "Hello ${i}"
+   this is some thing wrong happen
+@@
+@@ }
+@@
+@@ # Test the embedded directives
+@@
+
+@@
+@@ kpp perl_section_begin
+@@
+#
+# This subroutine is not prefixed with the usual @@ character
+#
+sub get_message {
+   return "End of test";
+}
+@@
+@@ kpp perl_section_end
+@@
+@@ my $message = &get_message;
+@@
+   ${message}
+
+@@
+@@ foreach my $dir ('enc', 'dec') {
+@@    my $DIR = uc $dir;
+@@
+
+module ${dir}_instante i_${dir}(
+   .clk   (clk)
+  ,.reset (rst_b)
+   //  ${$DIR} Side
+  ,.tdata (vif.${dir}.tdata)
+  ,.tlast (vif.${dir}.tlast)
+   @@ if ($dir eq 'enc') {
+  ,.sideband (vif.${dir}.side_band_${dir})
+   @@ }
+  ,.*
+);
+@@
+@@ }
+@@

@@ -1,0 +1,7 @@
+
+@@ kpp perl_section_begin
+@@ require "/home/hbnguyen/repos/HomeWork/verif/uvm/tools/kpp/tests/test.kpp.inc";
+@@ kpp perl_section_end
+
+@@ my $tmp = var_declare("   ");
+${tmp};

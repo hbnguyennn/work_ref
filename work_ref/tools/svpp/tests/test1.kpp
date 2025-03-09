@@ -2,6 +2,7 @@ $write("\tThis is a message\n");
 
 16 Hello's follow
 
+@@ #asdfasf
 @@ # This is a comment
 @@
 @@ for (my $i=0; $i < 16; $i++) {
